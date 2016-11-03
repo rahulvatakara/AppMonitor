@@ -55,6 +55,8 @@ AppMonitor is a framework which can be used for monitoring your app usage includ
 
   s.platform     = :ios, “8.0”
   s.ios.deployment_target = “8.0”
+  s.pod_target_xcconfig = { 'SWIFT_VERSION' => '3' }
+
 
 
 
@@ -64,7 +66,7 @@ AppMonitor is a framework which can be used for monitoring your app usage includ
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  s.source       = { :git => "http://EXAMPLE/AppMonitor.git", :tag => "#{s.version}" }
+  s.source       = { :git => "https://github.com/rahulvatakara/AppMonitor.git", :tag => "#{s.version}" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -76,7 +78,7 @@ AppMonitor is a framework which can be used for monitoring your app usage includ
   #
 
   s.source_files  = "Classes", "Classes/**/*.{h,m}"
-  s.exclude_files = "Classes/Exclude"
+  s.exclude_files = ‘.git’, ‘Source’,’README.md’
 
   # s.public_header_files = "Classes/**/*.h"
 
