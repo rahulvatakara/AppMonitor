@@ -1,0 +1,6 @@
+framework module AppMonitor {
+  umbrella header "AppMonitor.h"
+
+  export *
+  module * { export * }
+}
