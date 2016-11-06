@@ -11,7 +11,7 @@ Pod::Spec.new do |s|
 
 
   s.name         = "AppMonitor"
-  s.version    = "0.0.1"
+  s.version    = "1.0"
   s.summary      = "AppMonitor monitors your app usage"
   s.description  = <<-DESC
 AppMonitor is a framework which can be used for monitoring your app usage including number of time user open the application and the time spend by user in your application
@@ -34,7 +34,7 @@ LICENSE
   s.platform     = :ios, "8.0"
   s.ios.deployment_target = "8.0"
 
-  s.pod_target_xcconfig = { 'SWIFT_VERSION' => '3' }
+ # s.pod_target_xcconfig = { 'SWIFT_VERSION' => '3' }
 
 
 

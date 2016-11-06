@@ -9,15 +9,25 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>BuildAppMonitor.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>311F6D441DCBB07B009E426E</key>
+		<key>310C21271DCCDFB500F539AC</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>311F6D4D1DCBB07B009E426E</key>
+		<key>310C21301DCCDFB500F539AC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>31A4B4681DCEFAC500FC55B1</key>
 		<dict>
 			<key>primary</key>
 			<true/>

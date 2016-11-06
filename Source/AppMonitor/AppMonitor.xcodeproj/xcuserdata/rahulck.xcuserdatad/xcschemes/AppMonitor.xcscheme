@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "311F6D441DCBB07B009E426E"
+               BlueprintIdentifier = "310C21271DCCDFB500F539AC"
                BuildableName = "AppMonitor.framework"
                BlueprintName = "AppMonitor"
                ReferencedContainer = "container:AppMonitor.xcodeproj">
@@ -32,7 +32,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "311F6D4D1DCBB07B009E426E"
+               BlueprintIdentifier = "310C21301DCCDFB500F539AC"
                BuildableName = "AppMonitorTests.xctest"
                BlueprintName = "AppMonitorTests"
                ReferencedContainer = "container:AppMonitor.xcodeproj">
@@ -42,7 +42,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "311F6D441DCBB07B009E426E"
+            BlueprintIdentifier = "310C21271DCCDFB500F539AC"
             BuildableName = "AppMonitor.framework"
             BlueprintName = "AppMonitor"
             ReferencedContainer = "container:AppMonitor.xcodeproj">
@@ -64,7 +64,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "311F6D441DCBB07B009E426E"
+            BlueprintIdentifier = "310C21271DCCDFB500F539AC"
             BuildableName = "AppMonitor.framework"
             BlueprintName = "AppMonitor"
             ReferencedContainer = "container:AppMonitor.xcodeproj">
@@ -82,7 +82,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "311F6D441DCBB07B009E426E"
+            BlueprintIdentifier = "310C21271DCCDFB500F539AC"
             BuildableName = "AppMonitor.framework"
             BlueprintName = "AppMonitor"
             ReferencedContainer = "container:AppMonitor.xcodeproj">
