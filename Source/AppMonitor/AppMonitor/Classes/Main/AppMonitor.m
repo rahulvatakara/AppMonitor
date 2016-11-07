@@ -10,6 +10,8 @@
 #import "AppMonitorContants.h"
 #import "AppMonitorManager.h"
 
+#define  COPY_RIGHTS @"Copyright © 2016 Robosoft Technologies Pvt Ltd. All rights reserved."
+
 @interface AppMonitor ()
 
 @property (nonatomic,assign) BOOL isInitialized;
@@ -98,6 +100,16 @@
 {
     NSString *logMessage = [NSString stringWithFormat:@"Deallocated %@",NSStringFromClass([self class])];
     [[AppMonitorLogger shared]Log:logMessage withLogLevel:AppMonitorLoggingLevelAllLogs];
+}
+#pragma mark - Framework Details
+-(NSString*) getFramewokVersion
+{
+    return [NSString stringWithFormat:@"AppMonitor Version :%f",AppMonitorVersionNumber];
+}
+
+-(NSString*) getFramewokCopyRight
+{
+    return COPY_RIGHTS;
 }
 
 #pragma mark-API keys
