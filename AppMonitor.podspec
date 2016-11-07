@@ -40,8 +40,8 @@ LICENSE
 
 
 
-  s.source       = { :git => "https://github.com/rahulvatakara/AppMonitor.git", :tag => "#{s.version}" }
-s.ios.vendored_frameworks = 'AppMonitor.framework'
+  s.source       = { :git => "https://github.com/rahulvatakara/AppMonitor.git", :branch => "master", :tag => "#{s.version}" }
+  s.ios.vendored_frameworks = 'AppMonitor.framework'
 
 
 
