@@ -33,4 +33,9 @@ FOUNDATION_EXPORT const unsigned char AppMonitorVersionString[];
 
 -(NSTimeInterval) getAppSpentTime;
 
+-(NSString*) getFramewokVersion;
+
+-(NSString*) getFramewokCopyRight;
+
+
 @end

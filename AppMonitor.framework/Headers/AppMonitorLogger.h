@@ -29,4 +29,9 @@ typedef NS_ENUM(NSUInteger, AppMonitorLoggingLevel) {
 
 -(void) Log:(NSString*)logMessage withLogLevel:(AppMonitorLoggingLevel)logLevel;
 
+-(void) LogFrameworkCopyRights;
+
+-(void) LogFrameworkVersion;
+
+
 @end

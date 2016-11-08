@@ -7,6 +7,7 @@
 //
 
 #import "AppMonitorLogger.h"
+#import "AppMonitor.h"
 
 #define TAG  @"AppMonitor"
 
@@ -58,5 +59,15 @@
 
     }
   #endif
+}
+-(void) LogFrameworkCopyRights
+{
+    NSLog(@"%@", [[AppMonitor sharedSDK]getFramewokCopyRight]);
+}
+
+-(void) LogFrameworkVersion
+{
+    NSLog(@"%@", [[AppMonitor sharedSDK]getFramewokVersion]);
+    
 }
 @end

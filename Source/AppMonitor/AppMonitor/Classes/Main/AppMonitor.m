@@ -59,6 +59,11 @@
         {
             [[AppMonitor sharedSDK]setIsInitialized:YES];
             [[AppMonitorLogger shared]setLoggingLevel:inLogLevel];
+            [[AppMonitorLogger shared]LogFrameworkVersion];
+            [[AppMonitorLogger shared]LogFrameworkCopyRights];
+
+
+            
             [[AppMonitorLogger shared]Log:LOG_MESSAGE_SDK_INITIALIZED withLogLevel:AppMonitorLoggingLevelAllLogs];
             [[[AppMonitor sharedSDK]monitorManager]startMonitor];
 

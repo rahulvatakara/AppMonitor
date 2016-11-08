@@ -4,38 +4,38 @@
   'roots': [
     {
       'type': 'directory',
-      'name': "/Users/rahulck/Library/Developer/Xcode/DerivedData/AppMonitor-ecdnapoeckwpjvgjysngjceilrex/Build/Products/Debug-iphonesimulator/AppMonitor.framework/Headers",
+      'name': "/Users/rahulck/Library/Developer/Xcode/DerivedData/AppMonitor-aacrydcbgufekyegejdddbxtuoig/Build/Products/Debug-iphonesimulator/AppMonitor.framework/Headers",
       'contents': [
         {
           'type': 'file',
           'name': "AppMonitor-Swift.h",
-          'external-contents': "/Users/rahulck/Library/Developer/Xcode/DerivedData/AppMonitor-ecdnapoeckwpjvgjysngjceilrex/Build/Products/Debug-iphonesimulator/AppMonitor.framework/Headers/AppMonitor-Swift.h"
+          'external-contents': "/Users/rahulck/Library/Developer/Xcode/DerivedData/AppMonitor-aacrydcbgufekyegejdddbxtuoig/Build/Products/Debug-iphonesimulator/AppMonitor.framework/Headers/AppMonitor-Swift.h"
         },
         {
           'type': 'file',
           'name': "AppMonitor.h",
-          'external-contents': "/Users/rahulck/AppMonitor/Source/AppMonitor/AppMonitor/AppMonitor.h"
+          'external-contents': "/Volumes/Development/Assigment/AppMonitor/AppMonitor/Source/AppMonitor/AppMonitor/AppMonitor.h"
         },
         {
           'type': 'file',
           'name': "AppMonitorEvent.h",
-          'external-contents': "/Users/rahulck/AppMonitor/Source/AppMonitor/AppMonitor/Classes/Event/AppMonitorEvent.h"
+          'external-contents': "/Volumes/Development/Assigment/AppMonitor/AppMonitor/Source/AppMonitor/AppMonitor/Classes/Event/AppMonitorEvent.h"
         },
         {
           'type': 'file',
           'name': "AppMonitorLogger.h",
-          'external-contents': "/Users/rahulck/AppMonitor/Source/AppMonitor/AppMonitor/Classes/Logging/AppMonitorLogger.h"
+          'external-contents': "/Volumes/Development/Assigment/AppMonitor/AppMonitor/Source/AppMonitor/AppMonitor/Classes/Logging/AppMonitorLogger.h"
         }
       ]
     },
     {
       'type': 'directory',
-      'name': "/Users/rahulck/Library/Developer/Xcode/DerivedData/AppMonitor-ecdnapoeckwpjvgjysngjceilrex/Build/Products/Debug-iphonesimulator/AppMonitor.framework/Modules",
+      'name': "/Users/rahulck/Library/Developer/Xcode/DerivedData/AppMonitor-aacrydcbgufekyegejdddbxtuoig/Build/Products/Debug-iphonesimulator/AppMonitor.framework/Modules",
       'contents': [
         {
           'type': 'file',
           'name': "module.modulemap",
-          'external-contents': "/Users/rahulck/AppMonitor/Source/AppMonitor/build/AppMonitor.build/Debug-iphonesimulator/AppMonitor.build/module.modulemap"
+          'external-contents': "/Volumes/Development/Assigment/AppMonitor/AppMonitor/Source/AppMonitor/build/AppMonitor.build/Debug-iphonesimulator/AppMonitor.build/module.modulemap"
         }
       ]
     }
