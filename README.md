@@ -27,8 +27,6 @@ You can install AppMonitor to your projects in two ways
 ```bash
 $ gem install cocoapods
 ```
-> CocoaPods 1.1.0+ is required to build Alamofire 4.0.0+.
-
 To integrate AppMonitor into your Xcode project using CocoaPods, specify it in your `Podfile`:
 
 ```ruby
