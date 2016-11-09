@@ -46,10 +46,8 @@ LICENSE
 
 
 
- # s.source_files  = "Classes", "Classes/**/*.{h,m}"
   s.exclude_files = '.git', 'Source','README.md'
 
-  # s.public_header_files = "Classes/**/*.h"
 
 
 
