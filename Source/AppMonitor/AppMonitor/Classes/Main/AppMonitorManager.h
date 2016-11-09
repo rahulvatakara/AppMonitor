@@ -10,12 +10,26 @@
 
 @interface AppMonitorManager : NSObject
 
--(NSInteger) getAppLaunchCount;
+/*!
+ @abstract  Returns app launch count
+ @return    appLaunchCount
+ */
+-(NSInteger) appLaunchCount;
 
--(NSTimeInterval) getAppSpentTime;
+/*!
+ @abstract   Returns app spent time
+ @return     appSpentTime
+ */
+-(NSTimeInterval) appSpentTime;
 
+/*!
+ @abstract  Start monitoring the app
+ */
 -(void) startMonitor;
 
+/*!
+ @abstract  Stop monitoring the app
+ */
 -(void) stopMonitor;
 
 @end

@@ -7,30 +7,39 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "AppMonitor.h"
 
-/*!
- @enum      AppMonitorLoggingLevel
- @abstract  AppMonitor Logging Level
- @field     AppMonitorLoggingLevelAllLogs, Enable all types of logs
- @field     AppMonitorLoggingLevelMinimal, Enable  minimal logs only
- @field     AppMonitorLoggingLevelErrors, Enable error logs only
 
- */
-typedef NS_ENUM(NSUInteger, AppMonitorLoggingLevel) {
-    AppMonitorLoggingLevelAllLogs,
-    AppMonitorLoggingLevelMinimal,
-    AppMonitorLoggingLevelErrors
-};
 @interface AppMonitorLogger : NSObject
 
+/*!
+ @abstract  This method will return the singleton instance of AppMonitorLogger
+ */
 + (AppMonitorLogger *)shared;
 
+/*!
+ @abstract  This method set logging level
+ @param     loggingLevel Logging level
+ */
 -(void) setLoggingLevel:(AppMonitorLoggingLevel)loggingLevel;
 
+/*!
+ @abstract  This method will log message to console
+ @param     logMessage message to be logged
+ @param     logLevel Logging level
+ */
 -(void) Log:(NSString*)logMessage withLogLevel:(AppMonitorLoggingLevel)logLevel;
 
+
+/*!
+ @abstract  This method will log framework copy rights to console
+ */
 -(void) LogFrameworkCopyRights;
 
+
+/*!
+ @abstract  This method will log framework version to console
+  */
 -(void) LogFrameworkVersion;
 
 

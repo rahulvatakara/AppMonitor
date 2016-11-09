@@ -13,15 +13,8 @@
 @property (nonatomic ,strong) NSString *eventName;
 @property (nonatomic ,strong) NSArray *attributes;
 
-/*!
- @abstract  Init with name and attributes
- @return    appLaunchCount
- */
 -(instancetype) initWithName:(NSString*)name attributes:(NSArray*)attributes;
 
-/*!
- @abstract  Post Event
- */
 -(void) postEvent;
 
 @end

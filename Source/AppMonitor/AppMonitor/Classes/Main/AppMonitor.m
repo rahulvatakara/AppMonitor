@@ -9,6 +9,8 @@
 #import "AppMonitor.h"
 #import "AppMonitorContants.h"
 #import "AppMonitorManager.h"
+#import "AppMonitorLogger.h"
+#import "AppMonitorEvent.h"
 
 #define  COPY_RIGHTS @"Copyright © 2016 Robosoft Technologies Pvt Ltd. All rights reserved."
 
@@ -91,14 +93,39 @@
                                                  withLogLevel:AppMonitorLoggingLevelErrors];
     }
 }
--(NSInteger) getAppLaunchCount
+-(NSInteger) appLaunchCount
 {
-    return [self.monitorManager getAppLaunchCount];
+    NSInteger appLaunchCount = 0;
+    
+    if ([self isInitialized])
+    {
+        appLaunchCount = [self.monitorManager appLaunchCount];
+        
+    }
+    else
+    {
+        [[AppMonitorLogger shared]Log:LOG_MESSAGE_SDK_NOT_INITIALIZED
+                         withLogLevel:AppMonitorLoggingLevelErrors];
+    }
+    return appLaunchCount;
 }
 
--(NSTimeInterval) getAppSpentTime
+-(NSTimeInterval) appSpentTime
 {
-    return [self.monitorManager getAppSpentTime];
+    NSTimeInterval appSpentTime = 0.0;
+   
+    if ([self isInitialized])
+    {
+        appSpentTime = [self.monitorManager appSpentTime];
+        
+    }
+    else
+    {
+        [[AppMonitorLogger shared]Log:LOG_MESSAGE_SDK_NOT_INITIALIZED
+                         withLogLevel:AppMonitorLoggingLevelErrors];
+    }
+    return appSpentTime;
+
 }
 
 -(void)dealloc
@@ -107,12 +134,12 @@
     [[AppMonitorLogger shared]Log:logMessage withLogLevel:AppMonitorLoggingLevelAllLogs];
 }
 #pragma mark - Framework Details
--(NSString*) getFramewokVersion
+-(NSString*) framewokVersion
 {
-    return [NSString stringWithFormat:@"AppMonitor Version :%f",AppMonitorVersionNumber];
+    return [NSString stringWithFormat:@"AppMonitor Version :%1.1f",AppMonitorVersionNumber];
 }
 
--(NSString*) getFramewokCopyRight
+-(NSString*) framewokCopyRight
 {
     return COPY_RIGHTS;
 }
@@ -120,6 +147,6 @@
 #pragma mark-API keys
 +(NSArray*)validAPIkeys
 {
-    return @[@"12345",@"45678",@"abcde"];
+    return @[@"12345",@"45678",@"abcde",@"abc123"];
 }
 @end

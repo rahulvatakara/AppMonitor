@@ -14,28 +14,64 @@ FOUNDATION_EXPORT double AppMonitorVersionNumber;
 //! Project version string for AppMonitor.
 FOUNDATION_EXPORT const unsigned char AppMonitorVersionString[];
 
-// In this header, you should import all the public headers of your framework using statements like #import <AppMonitor/PublicHeader.h>
-
-#import <AppMonitor/AppMonitorLogger.h>
-#import <AppMonitor/AppMonitorEvent.h>
-
+/*!
+ @enum      AppMonitorLoggingLevel
+ @abstract  AppMonitor Logging Level
+ @field     AppMonitorLoggingLevelAllLogs, Enable all types of logs
+ @field     AppMonitorLoggingLevelMinimal, Enable  minimal logs only
+ @field     AppMonitorLoggingLevelErrors, Enable error logs only
+ */
+typedef NS_ENUM(NSUInteger, AppMonitorLoggingLevel) {
+    AppMonitorLoggingLevelAllLogs,
+    AppMonitorLoggingLevelMinimal,
+    AppMonitorLoggingLevelErrors
+};
 
 
 @interface AppMonitor : NSObject
 
+/**
+ * @abstract  This method will return the singleton instance of SDK
+ */
 + (AppMonitor *)sharedSDK;
 
+/*
+ @function   initializeWithAPIKey:logLevel:
+ @abstract  This method will initialise the sdk.SDK should be initialised before calling any other apis
+ @param     apiKey, Valid api key need for initialising the SDK.
+ @param     logLevel,Logging level
+ */
 +(void) initializeWithAPIKey:(NSString*)apiKey logLevel:(AppMonitorLoggingLevel)logLevel;
 
+/*!
+ @abstract  This method will post event
+ @param     eventName name of the event
+ @param     attributes for event
+ */
 -(void) postEvent:(NSString*) eventName withAttributes:(NSArray*)attributes;
 
--(NSInteger) getAppLaunchCount;
+/*!
+ @abstract  This method will reurn app launch count
+ @return    AppLaunchCount
+ */
+-(NSInteger) appLaunchCount;
 
--(NSTimeInterval) getAppSpentTime;
+/*!
+ @abstract  This method will return app spent time
+ @return    App spent time
+ */
+-(NSTimeInterval) appSpentTime;
+/*!
+ @abstract  This method will return the framework version
+ @return    Framework Version
+ */
+-(NSString*) framewokVersion;
 
--(NSString*) getFramewokVersion;
-
--(NSString*) getFramewokCopyRight;
+/*!
+ @abstract  This method will return the copy rights
+ @return    Framework CopyRight
+ */
+-(NSString*) framewokCopyRight;
 
 
 @end

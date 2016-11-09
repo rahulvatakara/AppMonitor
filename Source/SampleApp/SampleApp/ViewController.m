@@ -19,8 +19,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    self.appLauchCountLabel.text = [NSString stringWithFormat:@"%ld",(long)[[AppMonitor sharedSDK]getAppLaunchCount]];
-       self.appSpentTimeLabel.text = [NSString stringWithFormat:@"%f",[[AppMonitor sharedSDK]getAppSpentTime]];
+    self.appLauchCountLabel.text = [NSString stringWithFormat:@"%ld",(long)[[AppMonitor sharedSDK]appLaunchCount]];
+       self.appSpentTimeLabel.text = [NSString stringWithFormat:@"%f",[[AppMonitor sharedSDK]appSpentTime]];
 }
 
 
@@ -31,8 +31,8 @@
 
 - (IBAction)updateDetailClicked:(id)sender
 {
-    self.appLauchCountLabel.text = [NSString stringWithFormat:@"%ld",(long)[[AppMonitor sharedSDK]getAppLaunchCount]];
-    self.appSpentTimeLabel.text = [NSString stringWithFormat:@"%f",[[AppMonitor sharedSDK]getAppSpentTime]];
+    self.appLauchCountLabel.text = [NSString stringWithFormat:@"%ld",(long)[[AppMonitor sharedSDK]appLaunchCount]];
+    self.appSpentTimeLabel.text = [NSString stringWithFormat:@"%f",[[AppMonitor sharedSDK]appSpentTime]];
 
 }
 - (IBAction)postEventClicked:(id)sender

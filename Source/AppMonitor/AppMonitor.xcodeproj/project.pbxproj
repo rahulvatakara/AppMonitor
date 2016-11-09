@@ -24,9 +24,9 @@
 		310C21321DCCDFB500F539AC /* AppMonitor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 310C21281DCCDFB500F539AC /* AppMonitor.framework */; };
 		310C21371DCCDFB500F539AC /* AppMonitorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 310C21361DCCDFB500F539AC /* AppMonitorTests.m */; };
 		310C217C1DCCE4BD00F539AC /* AppMonitor.h in Headers */ = {isa = PBXBuildFile; fileRef = 310C217B1DCCE4BD00F539AC /* AppMonitor.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		310C21841DCCE5CC00F539AC /* AppMonitorLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 310C21821DCCE5CC00F539AC /* AppMonitorLogger.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		310C21841DCCE5CC00F539AC /* AppMonitorLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 310C21821DCCE5CC00F539AC /* AppMonitorLogger.h */; };
 		310C21851DCCE5CC00F539AC /* AppMonitorLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 310C21831DCCE5CC00F539AC /* AppMonitorLogger.m */; };
-		310C218D1DCCFEC500F539AC /* AppMonitorEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 310C218B1DCCFEC500F539AC /* AppMonitorEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		310C218D1DCCFEC500F539AC /* AppMonitorEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 310C218B1DCCFEC500F539AC /* AppMonitorEvent.h */; };
 		310C218E1DCCFEC500F539AC /* AppMonitorEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 310C218C1DCCFEC500F539AC /* AppMonitorEvent.m */; };
 		310C21921DCCFEF600F539AC /* AppMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 310C21901DCCFEF600F539AC /* AppMonitor.m */; };
 		310C21961DCD0EE700F539AC /* AppMonitorContants.h in Headers */ = {isa = PBXBuildFile; fileRef = 310C21941DCD0EE700F539AC /* AppMonitorContants.h */; };
@@ -348,7 +348,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 1.2;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -400,7 +400,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 1.2;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -425,6 +425,8 @@
 		310C213D1DCCDFB500F539AC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				CODE_SIGN_IDENTITY = "";
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
 				DEFINES_MODULE = YES;
@@ -444,6 +446,8 @@
 		310C213E1DCCDFB500F539AC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				CODE_SIGN_IDENTITY = "";
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
 				DEFINES_MODULE = YES;

@@ -8,7 +8,7 @@
 
 #import "AppMonitorManager.h"
 #import "AppMonitorLogger.h"
-
+#import "AppMonitorContants.h"
 static NSString * const kAppLaunchCount = @"AppMonitorAppLaunchCount";
 static NSString * const kAppSpentTime   = @"AppMonitorAppSpentTime";
 
@@ -44,50 +44,82 @@ static NSString * const kAppSpentTime   = @"AppMonitorAppSpentTime";
     return self;
 }
 
--(NSInteger) getAppLaunchCount
+-(NSInteger) appLaunchCount
 {
+    NSInteger currentLuanchCount = 0;
     
-    NSInteger currentLuanchCount = [[[NSUserDefaults standardUserDefaults]objectForKey:
-                                     kAppLaunchCount]integerValue];
+    @try {
+        currentLuanchCount = [[[NSUserDefaults standardUserDefaults]objectForKey:
+                               kAppLaunchCount]integerValue];
+        
+    } @catch (NSException *exception) {
+        
+        currentLuanchCount = -1;
+        [[AppMonitorLogger shared]Log:LOG_MESSAGE_SDK_UNKNOW_ERROR_OCCURED
+                         withLogLevel:AppMonitorLoggingLevelErrors];
+        
+    }
     return currentLuanchCount;
 }
 
--(NSTimeInterval) getAppSpentTime
+-(NSTimeInterval) appSpentTime
 {
-    [self updateAppSpentTime];
+    NSTimeInterval spentTimeTillNow = 0;
+  
+    @try {
+        [self updateAppSpentTime];
+        spentTimeTillNow = [[[NSUserDefaults standardUserDefaults]objectForKey:kAppSpentTime]
+                            doubleValue];
+    }
+    @catch (NSException *exception) {
+        spentTimeTillNow = -1;
+        [[AppMonitorLogger shared]Log:LOG_MESSAGE_SDK_UNKNOW_ERROR_OCCURED
+                         withLogLevel:AppMonitorLoggingLevelErrors];
+    }
 
-    NSTimeInterval spentTimeTillNow = [[[NSUserDefaults standardUserDefaults]objectForKey:kAppSpentTime]
-                                       doubleValue];
     return spentTimeTillNow;
 }
 -(void) startMonitor
 {
-    if (!_isMonitoring) {
-       
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                      selector:@selector(applicationDidBecomeActiveNotification:)
-                                        name:UIApplicationDidBecomeActiveNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                                 selector:@selector(applicationWillResignActiveNotification:)
-                                                     name:UIApplicationWillResignActiveNotification object:nil];
-
-        
-        _isMonitoring = YES;
+    @try {
+    
+        if (!_isMonitoring) {
+            
+            [[NSNotificationCenter defaultCenter] addObserver:self
+                                                     selector:@selector(applicationDidBecomeActiveNotification:)
+                                                         name:UIApplicationDidBecomeActiveNotification object:nil];
+            [[NSNotificationCenter defaultCenter] addObserver:self
+                                                     selector:@selector(applicationWillResignActiveNotification:)
+                                                         name:UIApplicationWillResignActiveNotification object:nil];
+            _isMonitoring = YES;
+        }
     }
-
+    @catch (NSException *exception){
+      
+        [[AppMonitorLogger shared]Log:LOG_MESSAGE_SDK_UNKNOW_ERROR_OCCURED
+                         withLogLevel:AppMonitorLoggingLevelErrors];
+    }
 }
 
 -(void) stopMonitor
 {
-    if (_isMonitoring) {
-      
-        [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationDidBecomeActiveNotification object:nil];
-        
-         [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationWillResignActiveNotification object:nil];
-
-        _isMonitoring = NO;
+    @try {
+        if (_isMonitoring) {
+            
+            [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                            name:UIApplicationDidBecomeActiveNotification object:nil];
+            
+            [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                            name:UIApplicationWillResignActiveNotification object:nil];
+            
+            _isMonitoring = NO;
     }
-    
+    } @catch (NSException *exception) {
+      
+        [[AppMonitorLogger shared]Log:LOG_MESSAGE_SDK_UNKNOW_ERROR_OCCURED
+                         withLogLevel:AppMonitorLoggingLevelErrors];
+    }
+
 }
 -(void)dealloc
 {

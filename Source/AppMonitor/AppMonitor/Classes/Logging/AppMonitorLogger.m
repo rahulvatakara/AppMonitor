@@ -62,12 +62,12 @@
 }
 -(void) LogFrameworkCopyRights
 {
-    NSLog(@"%@", [[AppMonitor sharedSDK]getFramewokCopyRight]);
+    NSLog(@"%@", [[AppMonitor sharedSDK]framewokCopyRight]);
 }
 
 -(void) LogFrameworkVersion
 {
-    NSLog(@"%@", [[AppMonitor sharedSDK]getFramewokVersion]);
+    NSLog(@"%@", [[AppMonitor sharedSDK]framewokVersion]);
     
 }
 @end
