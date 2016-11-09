@@ -84,7 +84,7 @@ This API will returns the spent time of user in the application till that time .
 ```
 ## TroubleShooting
 
-1. After manual integration if your are getting below error
+1.  After manual integration if your are getting below error
 
 dyld: Library not loaded: @rpath/AppMonitor.framework/AppMonitor
 Referenced from: /Users/rahul/Library/Developer/CoreSimulator/Devices/2BDC82C0-4F17-4CEB-A5B7-363EC49DB4FE/data/Containers/Bundle/Application/476ABE1D-7E7C-41D5-BEAA-EAE3B5623E23/Test.app/Test
@@ -93,7 +93,7 @@ Reason: image not found
 ######   This means you haven't followed the manual integration steps.But don't worry adding AppMonitor framework in emebeded binaries section of your Xcode project will fix this issue.
 
 
-2. If you are getting Invalid API key error 
+2.  If you are getting Invalid API key error 
 
 2016-11-09 20:20:50.762 Test[2851:1610829] AppMonitor::INVALID API KEY
 2016-11-09 20:20:50.867 Test[2851:1610829] *** Terminating app due to uncaught exception of class'__NSCFConstantString'
@@ -103,7 +103,7 @@ libc++abi.dylib: terminating with uncaught exception of type __NSCFConstantStrin
 ######  You  will get this error when you have initialised with an invalid API key.
 
 
-3. If you are SDK not initialied error 
+3.  If you are SDK not initialied error 
 
 2016-11-09 20:33:13.769 SampleApp[3142:1671162] AppMonitor::SDK NOT INIATIALIZED 
 
