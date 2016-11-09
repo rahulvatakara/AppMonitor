@@ -82,7 +82,7 @@ This API will returns the spent time of user in the application till that time .
 ```ObjC
 [[AppMonitor sharedSDK]appLaunchCount]];
 ```
-## TroubleShooting
+## Trouble Shooting
 
 1.After manual integration if your are getting below error
 
