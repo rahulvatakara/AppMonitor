@@ -52,7 +52,7 @@ You are done.
 ## Usage
 
 ### Intialising Framework
-SDK should be initialised before calling invoking any APIs available in the framewok. 
+SDK should be initialised before  invoking any APIs available in the framewok. 
 
 ```ObjC
 #import <AppMonitor/AppMonitor.h>
