@@ -81,7 +81,6 @@ static NSString * const kAppSpentTime   = @"AppMonitorAppSpentTime";
 }
 -(void) startMonitor
 {
-    @try {
     
         if (!_isMonitoring) {
             
@@ -93,17 +92,11 @@ static NSString * const kAppSpentTime   = @"AppMonitorAppSpentTime";
                                                          name:UIApplicationWillResignActiveNotification object:nil];
             _isMonitoring = YES;
         }
-    }
-    @catch (NSException *exception){
-      
-        [[AppMonitorLogger shared]Log:LOG_MESSAGE_SDK_UNKNOW_ERROR_OCCURED
-                         withLogLevel:AppMonitorLoggingLevelErrors];
-    }
+    
 }
 
 -(void) stopMonitor
 {
-    @try {
         if (_isMonitoring) {
             
             [[NSNotificationCenter defaultCenter] removeObserver:self
@@ -114,12 +107,6 @@ static NSString * const kAppSpentTime   = @"AppMonitorAppSpentTime";
             
             _isMonitoring = NO;
     }
-    } @catch (NSException *exception) {
-      
-        [[AppMonitorLogger shared]Log:LOG_MESSAGE_SDK_UNKNOW_ERROR_OCCURED
-                         withLogLevel:AppMonitorLoggingLevelErrors];
-    }
-
 }
 -(void)dealloc
 {

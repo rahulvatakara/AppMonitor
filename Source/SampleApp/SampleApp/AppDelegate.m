@@ -18,7 +18,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-   // [AppMonitor initializeWithAPIKey:@"12345" logLevel:AppMonitorLoggingLevelAllLogs];
+    [AppMonitor initializeWithAPIKey:@"12345" logLevel:AppMonitorLoggingLevelAllLogs];
     return YES;
 }
 

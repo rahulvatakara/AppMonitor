@@ -21,6 +21,8 @@
     // Do any additional setup after loading the view, typically from a nib.
     self.appLauchCountLabel.text = [NSString stringWithFormat:@"%ld",(long)[[AppMonitor sharedSDK]appLaunchCount]];
        self.appSpentTimeLabel.text = [NSString stringWithFormat:@"%f",[[AppMonitor sharedSDK]appSpentTime]];
+    
+    
 }
 
 
