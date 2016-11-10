@@ -34,7 +34,7 @@ platform :ios, '8.0'
 use_frameworks!
 
 target '<Your Target Name>' do
-pod 'AppMonitor', '~> 1.2'
+pod 'AppMonitor', '~> 1.5'
 end
 ```
 ### Manual Instalation
