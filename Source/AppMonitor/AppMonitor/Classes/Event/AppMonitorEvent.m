@@ -8,6 +8,9 @@
 
 #import "AppMonitorEvent.h"
 #import "AppMonitorLogger.h"
+#import "AppMonitorContants.h"
+
+NSString* const kEventKey = @"kEventKey";
 
 @implementation AppMonitorEvent
 
@@ -25,6 +28,18 @@
     
     NSString *postEvent = [NSString stringWithFormat:@"Event with name :%@ attributes : %@",
                            self.eventName,self.attributes];
+    
+    @try {
+        [[NSUserDefaults standardUserDefaults] setObject:postEvent forKey:kEventKey];
+        [[NSUserDefaults standardUserDefaults]synchronize];
+    }
+    @catch (NSException *exception) {
+      
+        [[AppMonitorLogger shared]Log:LOG_MESSAGE_SDK_UNKNOW_ERROR_OCCURED
+                         withLogLevel:AppMonitorLoggingLevelErrors];
+    }
+    
+    
     
     [[AppMonitorLogger shared]Log:postEvent withLogLevel:AppMonitorLoggingLevelMinimal];
 }
