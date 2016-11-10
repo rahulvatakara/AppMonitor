@@ -72,13 +72,13 @@ You can post events with name and attributes.
 This API will returns the app lunch count till that time . It will be returning an `NSInteger`.
 
 ```ObjC
-[[AppMonitor sharedSDK]appLaunchCount]];
+[[AppMonitor sharedSDK]appLaunchCount];
 ```
 
 ### Retrieving App spent time
 This API will returns the spent time of user in the application till that time . It will be returning an `NSTimeInterval`.
 ```ObjC
-[[AppMonitor sharedSDK]appLaunchCount]];
+[[AppMonitor sharedSDK]appSpentTime];
 ```
 ## Trouble shooting
 
