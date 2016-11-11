@@ -10,7 +10,7 @@
 #import "AppMonitorContants.h"
 #import "AppMonitorManager.h"
 #import "AppMonitorLogger.h"
-#import "AppMonitorEvent.h"
+#import "AppMonitorEventManager.h"
 
 #define  COPY_RIGHTS @"Copyright © 2016 Robosoft Technologies Pvt Ltd. All rights reserved."
 
@@ -53,27 +53,25 @@
        
         if ([[AppMonitor sharedSDK]isInitialized]) {
           
-            [[AppMonitorLogger shared]Log:LOG_MESSAGE_SDK_ALREADY_INITIALIZED withLogLevel:AppMonitorLoggingLevelMinimal];
+           [AppMonitorLogger logWithLogLevel:AppMonitorLoggingLevelMinimal message:LOG_MESSAGE_SDK_ALREADY_INITIALIZED];
             
 
         }
         else
         {
             [[AppMonitor sharedSDK]setIsInitialized:YES];
-            [[AppMonitorLogger shared]setLoggingLevel:inLogLevel];
-            [[AppMonitorLogger shared]LogFrameworkVersion];
-            [[AppMonitorLogger shared]LogFrameworkCopyRights];
+            [AppMonitorLogger setLoggingLevel:inLogLevel];
+            [AppMonitorLogger LogFrameworkVersion];
+            [AppMonitorLogger LogFrameworkCopyRights];
 
-
-            
-            [[AppMonitorLogger shared]Log:LOG_MESSAGE_SDK_INITIALIZED withLogLevel:AppMonitorLoggingLevelAllLogs];
+            [AppMonitorLogger logWithLogLevel:AppMonitorLoggingLevelAllLogs message:LOG_MESSAGE_SDK_INITIALIZED];
             [[[AppMonitor sharedSDK]monitorManager]startMonitor];
 
         }
     }
     else
     {
-        [[AppMonitorLogger shared]Log:LOG_MESSAGE_SDK_INVALID_APIKEY withLogLevel:AppMonitorLoggingLevelErrors];
+        [AppMonitorLogger logWithLogLevel:AppMonitorLoggingLevelErrors message:LOG_MESSAGE_SDK_INVALID_APIKEY];
         
         @throw NSInvalidArgumentException;
     }
@@ -83,16 +81,19 @@
 {
     if ([self isInitialized])
     {
-        AppMonitorEvent *event = [[AppMonitorEvent alloc]initWithName:eventName attributes:attributes];
-        [event postEvent];
- 
+    
+        [AppMonitorEventManager postEventWithName:eventName attributes:attributes];
     }
     else
     {
-        [[AppMonitorLogger shared]Log:LOG_MESSAGE_SDK_NOT_INITIALIZED
-                                                 withLogLevel:AppMonitorLoggingLevelErrors];
+        [AppMonitorLogger logWithLogLevel:AppMonitorLoggingLevelErrors message:LOG_MESSAGE_SDK_NOT_INITIALIZED];
+        
+        @throw NSInvalidArgumentException;
+
+
     }
 }
+
 -(NSInteger) appLaunchCount
 {
     NSInteger appLaunchCount = 0;
@@ -104,8 +105,10 @@
     }
     else
     {
-        [[AppMonitorLogger shared]Log:LOG_MESSAGE_SDK_NOT_INITIALIZED
-                         withLogLevel:AppMonitorLoggingLevelErrors];
+        [AppMonitorLogger logWithLogLevel:AppMonitorLoggingLevelErrors message:LOG_MESSAGE_SDK_NOT_INITIALIZED];
+
+        @throw NSInvalidArgumentException;
+
     }
     return appLaunchCount;
 }
@@ -121,8 +124,11 @@
     }
     else
     {
-        [[AppMonitorLogger shared]Log:LOG_MESSAGE_SDK_NOT_INITIALIZED
-                         withLogLevel:AppMonitorLoggingLevelErrors];
+        [AppMonitorLogger logWithLogLevel:AppMonitorLoggingLevelErrors message:LOG_MESSAGE_SDK_NOT_INITIALIZED];
+        
+        @throw NSInvalidArgumentException;
+
+
     }
     return appSpentTime;
 
@@ -131,7 +137,7 @@
 -(void)dealloc
 {
     NSString *logMessage = [NSString stringWithFormat:@"Deallocated %@",NSStringFromClass([self class])];
-    [[AppMonitorLogger shared]Log:logMessage withLogLevel:AppMonitorLoggingLevelAllLogs];
+    [AppMonitorLogger logWithLogLevel:AppMonitorLoggingLevelAllLogs message:logMessage];
 }
 #pragma mark - Framework Details
 -(NSString*) framewokVersion

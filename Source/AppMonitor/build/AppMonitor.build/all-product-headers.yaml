@@ -4,12 +4,12 @@
   'roots': [
     {
       'type': 'directory',
-      'name': "/Users/rahulck/Library/Developer/Xcode/DerivedData/AppMonitor-aacrydcbgufekyegejdddbxtuoig/Build/Products/Debug-iphonesimulator/AppMonitor.framework/Headers",
+      'name': "/Users/rahulck/Library/Developer/Xcode/DerivedData/SampleApp-bfrcslddmykxplefezkzzzzsaqfv/Build/Products/Debug-iphonesimulator/AppMonitor.framework/Headers",
       'contents': [
         {
           'type': 'file',
           'name': "AppMonitor-Swift.h",
-          'external-contents': "/Users/rahulck/Library/Developer/Xcode/DerivedData/AppMonitor-aacrydcbgufekyegejdddbxtuoig/Build/Products/Debug-iphonesimulator/AppMonitor.framework/Headers/AppMonitor-Swift.h"
+          'external-contents': "/Users/rahulck/Library/Developer/Xcode/DerivedData/SampleApp-bfrcslddmykxplefezkzzzzsaqfv/Build/Products/Debug-iphonesimulator/AppMonitor.framework/Headers/AppMonitor-Swift.h"
         },
         {
           'type': 'file',
@@ -20,7 +20,7 @@
     },
     {
       'type': 'directory',
-      'name': "/Users/rahulck/Library/Developer/Xcode/DerivedData/AppMonitor-aacrydcbgufekyegejdddbxtuoig/Build/Products/Debug-iphonesimulator/AppMonitor.framework/Modules",
+      'name': "/Users/rahulck/Library/Developer/Xcode/DerivedData/SampleApp-bfrcslddmykxplefezkzzzzsaqfv/Build/Products/Debug-iphonesimulator/AppMonitor.framework/Modules",
       'contents': [
         {
           'type': 'file',

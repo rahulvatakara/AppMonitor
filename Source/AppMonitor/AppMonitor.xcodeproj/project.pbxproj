@@ -26,12 +26,16 @@
 		310C217C1DCCE4BD00F539AC /* AppMonitor.h in Headers */ = {isa = PBXBuildFile; fileRef = 310C217B1DCCE4BD00F539AC /* AppMonitor.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		310C21841DCCE5CC00F539AC /* AppMonitorLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 310C21821DCCE5CC00F539AC /* AppMonitorLogger.h */; };
 		310C21851DCCE5CC00F539AC /* AppMonitorLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 310C21831DCCE5CC00F539AC /* AppMonitorLogger.m */; };
-		310C218D1DCCFEC500F539AC /* AppMonitorEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 310C218B1DCCFEC500F539AC /* AppMonitorEvent.h */; };
-		310C218E1DCCFEC500F539AC /* AppMonitorEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 310C218C1DCCFEC500F539AC /* AppMonitorEvent.m */; };
+		310C218D1DCCFEC500F539AC /* AppMonitorEventManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 310C218B1DCCFEC500F539AC /* AppMonitorEventManager.h */; };
+		310C218E1DCCFEC500F539AC /* AppMonitorEventManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 310C218C1DCCFEC500F539AC /* AppMonitorEventManager.m */; };
 		310C21921DCCFEF600F539AC /* AppMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 310C21901DCCFEF600F539AC /* AppMonitor.m */; };
 		310C21961DCD0EE700F539AC /* AppMonitorContants.h in Headers */ = {isa = PBXBuildFile; fileRef = 310C21941DCD0EE700F539AC /* AppMonitorContants.h */; };
 		310C219A1DCD10EC00F539AC /* AppMonitorManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 310C21981DCD10EC00F539AC /* AppMonitorManager.h */; };
 		310C219B1DCD10EC00F539AC /* AppMonitorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 310C21991DCD10EC00F539AC /* AppMonitorManager.m */; };
+		319201741DD6027A00CF70EA /* AppMonitorPersistanceManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 319201721DD6027A00CF70EA /* AppMonitorPersistanceManager.h */; };
+		319201751DD6027A00CF70EA /* AppMonitorPersistanceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 319201731DD6027A00CF70EA /* AppMonitorPersistanceManager.m */; };
+		31E294AF1DD6081E00BD4560 /* NSData+AES256.h in Headers */ = {isa = PBXBuildFile; fileRef = 31E294AD1DD6081E00BD4560 /* NSData+AES256.h */; };
+		31E294B01DD6081E00BD4560 /* NSData+AES256.m in Sources */ = {isa = PBXBuildFile; fileRef = 31E294AE1DD6081E00BD4560 /* NSData+AES256.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,12 +57,17 @@
 		310C217B1DCCE4BD00F539AC /* AppMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppMonitor.h; sourceTree = "<group>"; };
 		310C21821DCCE5CC00F539AC /* AppMonitorLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppMonitorLogger.h; sourceTree = "<group>"; };
 		310C21831DCCE5CC00F539AC /* AppMonitorLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppMonitorLogger.m; sourceTree = "<group>"; };
-		310C218B1DCCFEC500F539AC /* AppMonitorEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppMonitorEvent.h; sourceTree = "<group>"; };
-		310C218C1DCCFEC500F539AC /* AppMonitorEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppMonitorEvent.m; sourceTree = "<group>"; };
+		310C218B1DCCFEC500F539AC /* AppMonitorEventManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppMonitorEventManager.h; sourceTree = "<group>"; };
+		310C218C1DCCFEC500F539AC /* AppMonitorEventManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppMonitorEventManager.m; sourceTree = "<group>"; };
 		310C21901DCCFEF600F539AC /* AppMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppMonitor.m; sourceTree = "<group>"; };
 		310C21941DCD0EE700F539AC /* AppMonitorContants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppMonitorContants.h; sourceTree = "<group>"; };
 		310C21981DCD10EC00F539AC /* AppMonitorManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppMonitorManager.h; sourceTree = "<group>"; };
 		310C21991DCD10EC00F539AC /* AppMonitorManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppMonitorManager.m; sourceTree = "<group>"; };
+		319201721DD6027A00CF70EA /* AppMonitorPersistanceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppMonitorPersistanceManager.h; sourceTree = "<group>"; };
+		319201731DD6027A00CF70EA /* AppMonitorPersistanceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppMonitorPersistanceManager.m; sourceTree = "<group>"; };
+		31E294AD1DD6081E00BD4560 /* NSData+AES256.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+AES256.h"; sourceTree = "<group>"; };
+		31E294AE1DD6081E00BD4560 /* NSData+AES256.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+AES256.m"; sourceTree = "<group>"; };
+		31E294B11DD6096300BD4560 /* AppMonitorEncryptionKeys.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppMonitorEncryptionKeys.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +129,7 @@
 		310C21761DCCE35F00F539AC /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				31E294AC1DD607F500BD4560 /* Categories */,
 				310C21931DCD0EC000F539AC /* Constants */,
 				310C21791DCCE40600F539AC /* Main */,
 				310C21781DCCE3E300F539AC /* Event */,
@@ -140,8 +150,8 @@
 		310C21781DCCE3E300F539AC /* Event */ = {
 			isa = PBXGroup;
 			children = (
-				310C218B1DCCFEC500F539AC /* AppMonitorEvent.h */,
-				310C218C1DCCFEC500F539AC /* AppMonitorEvent.m */,
+				310C218B1DCCFEC500F539AC /* AppMonitorEventManager.h */,
+				310C218C1DCCFEC500F539AC /* AppMonitorEventManager.m */,
 			);
 			path = Event;
 			sourceTree = "<group>";
@@ -152,6 +162,8 @@
 				310C21901DCCFEF600F539AC /* AppMonitor.m */,
 				310C21981DCD10EC00F539AC /* AppMonitorManager.h */,
 				310C21991DCD10EC00F539AC /* AppMonitorManager.m */,
+				319201721DD6027A00CF70EA /* AppMonitorPersistanceManager.h */,
+				319201731DD6027A00CF70EA /* AppMonitorPersistanceManager.m */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -160,8 +172,18 @@
 			isa = PBXGroup;
 			children = (
 				310C21941DCD0EE700F539AC /* AppMonitorContants.h */,
+				31E294B11DD6096300BD4560 /* AppMonitorEncryptionKeys.h */,
 			);
 			path = Constants;
+			sourceTree = "<group>";
+		};
+		31E294AC1DD607F500BD4560 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				31E294AD1DD6081E00BD4560 /* NSData+AES256.h */,
+				31E294AE1DD6081E00BD4560 /* NSData+AES256.m */,
+			);
+			path = Categories;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -173,9 +195,11 @@
 			files = (
 				310C217C1DCCE4BD00F539AC /* AppMonitor.h in Headers */,
 				310C21961DCD0EE700F539AC /* AppMonitorContants.h in Headers */,
+				31E294AF1DD6081E00BD4560 /* NSData+AES256.h in Headers */,
+				319201741DD6027A00CF70EA /* AppMonitorPersistanceManager.h in Headers */,
 				310C21841DCCE5CC00F539AC /* AppMonitorLogger.h in Headers */,
 				310C219A1DCD10EC00F539AC /* AppMonitorManager.h in Headers */,
-				310C218D1DCCFEC500F539AC /* AppMonitorEvent.h in Headers */,
+				310C218D1DCCFEC500F539AC /* AppMonitorEventManager.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -298,10 +322,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				319201751DD6027A00CF70EA /* AppMonitorPersistanceManager.m in Sources */,
 				310C21921DCCFEF600F539AC /* AppMonitor.m in Sources */,
 				310C21851DCCE5CC00F539AC /* AppMonitorLogger.m in Sources */,
 				310C219B1DCD10EC00F539AC /* AppMonitorManager.m in Sources */,
-				310C218E1DCCFEC500F539AC /* AppMonitorEvent.m in Sources */,
+				31E294B01DD6081E00BD4560 /* NSData+AES256.m in Sources */,
+				310C218E1DCCFEC500F539AC /* AppMonitorEventManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -429,7 +455,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CODE_SIGN_IDENTITY = "";
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
-				CURRENT_PROJECT_VERSION = 1.5;
+				CURRENT_PROJECT_VERSION = 1.6;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -452,7 +478,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CODE_SIGN_IDENTITY = "";
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
-				CURRENT_PROJECT_VERSION = 1.5;
+				CURRENT_PROJECT_VERSION = 1.6;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;

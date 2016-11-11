@@ -9,9 +9,7 @@
 #import "AppMonitorManager.h"
 #import "AppMonitorLogger.h"
 #import "AppMonitorContants.h"
-static NSString * const kAppLaunchCount = @"AppMonitorAppLaunchCount";
-static NSString * const kAppSpentTime   = @"AppMonitorAppSpentTime";
-
+#import "AppMonitorPersistanceManager.h"
 
 @interface AppMonitorManager ()
 
@@ -29,17 +27,10 @@ static NSString * const kAppSpentTime   = @"AppMonitorAppSpentTime";
     self = [super init];
     if (self) {
         _isMonitoring = NO;
-      
-        static dispatch_once_t onceToken;
-        dispatch_once(&onceToken, ^{
-            
-        NSInteger currentLuanchCount = [[[NSUserDefaults standardUserDefaults]objectForKey:
-                                         kAppLaunchCount]integerValue];
-         currentLuanchCount ++;
-        [[NSUserDefaults standardUserDefaults]setObject:
-             [NSNumber numberWithInteger:currentLuanchCount] forKey:kAppLaunchCount];
-            
-        });
+        NSInteger currentLuanchCount = [AppMonitorPersistanceManager decryptAndRetrieveAppLaunchCount];
+        currentLuanchCount ++;
+        [AppMonitorPersistanceManager encryptAndSaveAppLaunchCount:currentLuanchCount];
+        
     }
     return self;
 }
@@ -49,14 +40,13 @@ static NSString * const kAppSpentTime   = @"AppMonitorAppSpentTime";
     NSInteger currentLuanchCount = 0;
     
     @try {
-        currentLuanchCount = [[[NSUserDefaults standardUserDefaults]objectForKey:
-                               kAppLaunchCount]integerValue];
+        currentLuanchCount = [AppMonitorPersistanceManager decryptAndRetrieveAppLaunchCount];
         
     } @catch (NSException *exception) {
         
         currentLuanchCount = -1;
-        [[AppMonitorLogger shared]Log:LOG_MESSAGE_SDK_UNKNOW_ERROR_OCCURED
-                         withLogLevel:AppMonitorLoggingLevelErrors];
+        [AppMonitorLogger logWithLogLevel:AppMonitorLoggingLevelErrors
+                                   message:@"%@",LOG_MESSAGE_SDK_UNKNOW_ERROR_OCCURED];
         
     }
     return currentLuanchCount;
@@ -68,13 +58,12 @@ static NSString * const kAppSpentTime   = @"AppMonitorAppSpentTime";
   
     @try {
         [self updateAppSpentTime];
-        spentTimeTillNow = [[[NSUserDefaults standardUserDefaults]objectForKey:kAppSpentTime]
-                            doubleValue];
+        spentTimeTillNow = [AppMonitorPersistanceManager decryptAndRetrieveAppSpentTime];
     }
     @catch (NSException *exception) {
         spentTimeTillNow = -1;
-        [[AppMonitorLogger shared]Log:LOG_MESSAGE_SDK_UNKNOW_ERROR_OCCURED
-                         withLogLevel:AppMonitorLoggingLevelErrors];
+        [AppMonitorLogger logWithLogLevel:AppMonitorLoggingLevelErrors
+                                  message:@"%@",LOG_MESSAGE_SDK_UNKNOW_ERROR_OCCURED];
     }
 
     return spentTimeTillNow;
@@ -104,25 +93,24 @@ static NSString * const kAppSpentTime   = @"AppMonitorAppSpentTime";
             
             [[NSNotificationCenter defaultCenter] removeObserver:self
                                                             name:UIApplicationWillResignActiveNotification object:nil];
-            
+        
             _isMonitoring = NO;
     }
 }
 -(void)dealloc
 {
     NSString *logMessage = [NSString stringWithFormat:@"Deallocated %@",NSStringFromClass([self class])];
-    [[AppMonitorLogger shared]Log:logMessage withLogLevel:AppMonitorLoggingLevelAllLogs];
+    [AppMonitorLogger logWithLogLevel:AppMonitorLoggingLevelAllLogs
+                              message:@"%@",logMessage];
 }
 -(void) updateAppSpentTime
 {
-    NSTimeInterval earlierSpentTime = [[[NSUserDefaults standardUserDefaults]objectForKey:kAppSpentTime]
-                                       doubleValue];
+    NSTimeInterval earlierSpentTime = [AppMonitorPersistanceManager decryptAndRetrieveAppSpentTime];
     NSTimeInterval spentTimeTillNow = fabs([self.startDate timeIntervalSinceDate:[NSDate date]])
                                        + earlierSpentTime;
+    self.startDate = [NSDate date];
     
-    
-    [[NSUserDefaults standardUserDefaults]setObject:[NSNumber numberWithDouble:spentTimeTillNow]
-                                             forKey:kAppSpentTime];
+    [AppMonitorPersistanceManager encryptAndSaveAppSpentTime:spentTimeTillNow];
 }
 #pragma mark -AppState Notification
 - (void)applicationDidBecomeActiveNotification:(NSNotification *)notification

@@ -13,34 +13,27 @@
 @interface AppMonitorLogger : NSObject
 
 /*!
- @abstract  This method will return the singleton instance of AppMonitorLogger
- */
-+ (AppMonitorLogger *)shared;
-
-/*!
  @abstract  This method set logging level
  @param     loggingLevel Logging level
  */
--(void) setLoggingLevel:(AppMonitorLoggingLevel)loggingLevel;
++(void) setLoggingLevel:(AppMonitorLoggingLevel)loggingLevel;
 
 /*!
  @abstract  This method will log message to console
- @param     logMessage message to be logged
  @param     logLevel Logging level
+ @param     format message to be logged
  */
--(void) Log:(NSString*)logMessage withLogLevel:(AppMonitorLoggingLevel)logLevel;
-
++ (void)logWithLogLevel:(AppMonitorLoggingLevel)logLevel  message:(NSString *)format, ...;
 
 /*!
  @abstract  This method will log framework copy rights to console
  */
--(void) LogFrameworkCopyRights;
-
++(void) LogFrameworkCopyRights;
 
 /*!
  @abstract  This method will log framework version to console
   */
--(void) LogFrameworkVersion;
++(void) LogFrameworkVersion;
 
 
 @end

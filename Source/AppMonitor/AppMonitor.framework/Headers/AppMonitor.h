@@ -57,7 +57,7 @@ typedef NS_ENUM(NSUInteger, AppMonitorLoggingLevel) {
 -(NSInteger) appLaunchCount;
 
 /*!
- @abstract  This method will return app spent time
+ @abstract  This method will return app spent time in seconds
  @return    App spent time
  */
 -(NSTimeInterval) appSpentTime;

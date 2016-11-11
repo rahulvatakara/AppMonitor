@@ -35,7 +35,7 @@ use_frameworks!
 
 target '<Your Target Name>' do
 
-pod 'AppMonitor', '~> 1.5'
+pod 'AppMonitor', '~> 1.6'
 
 end
 ```
