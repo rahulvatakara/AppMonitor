@@ -30,7 +30,10 @@
         NSInteger currentLuanchCount = [AppMonitorPersistanceManager decryptAndRetrieveAppLaunchCount];
         currentLuanchCount ++;
         [AppMonitorPersistanceManager encryptAndSaveAppLaunchCount:currentLuanchCount];
-        
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(didReceiveMemoryWarning)
+                                                     name:UIApplicationDidReceiveMemoryWarningNotification
+                                                   object:nil];
     }
     return self;
 }
@@ -40,6 +43,10 @@
     NSInteger currentLuanchCount = 0;
     
     @try {
+        
+        //This will start monitoting if it is not already monitoring
+        [self startMonitor];
+        
         currentLuanchCount = [AppMonitorPersistanceManager decryptAndRetrieveAppLaunchCount];
         
     } @catch (NSException *exception) {
@@ -57,6 +64,10 @@
     NSTimeInterval spentTimeTillNow = 0;
   
     @try {
+       
+        //This will start monitoting if it is not already monitoring
+        [self startMonitor];
+        
         [self updateAppSpentTime];
         spentTimeTillNow = [AppMonitorPersistanceManager decryptAndRetrieveAppSpentTime];
     }
@@ -97,21 +108,27 @@
             _isMonitoring = NO;
     }
 }
--(void)dealloc
-{
-    NSString *logMessage = [NSString stringWithFormat:@"Deallocated %@",NSStringFromClass([self class])];
-    [AppMonitorLogger logWithLogLevel:AppMonitorLoggingLevelAllLogs
-                              message:@"%@",logMessage];
-}
 -(void) updateAppSpentTime
 {
     NSTimeInterval earlierSpentTime = [AppMonitorPersistanceManager decryptAndRetrieveAppSpentTime];
     NSTimeInterval spentTimeTillNow = fabs([self.startDate timeIntervalSinceDate:[NSDate date]])
-                                       + earlierSpentTime;
+    + earlierSpentTime;
     self.startDate = [NSDate date];
     
     [AppMonitorPersistanceManager encryptAndSaveAppSpentTime:spentTimeTillNow];
 }
+-(void)dealloc
+{
+    [self stopMonitor];
+    NSString *logMessage = [NSString stringWithFormat:@"Deallocated %@",NSStringFromClass([self class])];
+    [AppMonitorLogger logWithLogLevel:AppMonitorLoggingLevelAllLogs
+                              message:@"%@",logMessage];
+}
+-(void) didReceiveMemoryWarning:(NSNotification*)notification
+{
+    [self stopMonitor];
+}
+
 #pragma mark -AppState Notification
 - (void)applicationDidBecomeActiveNotification:(NSNotification *)notification
 {
