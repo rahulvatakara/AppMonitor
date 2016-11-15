@@ -30,8 +30,6 @@
 		310C218E1DCCFEC500F539AC /* AppMonitorEventManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 310C218C1DCCFEC500F539AC /* AppMonitorEventManager.m */; };
 		310C21921DCCFEF600F539AC /* AppMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 310C21901DCCFEF600F539AC /* AppMonitor.m */; };
 		310C21961DCD0EE700F539AC /* AppMonitorContants.h in Headers */ = {isa = PBXBuildFile; fileRef = 310C21941DCD0EE700F539AC /* AppMonitorContants.h */; };
-		310C219A1DCD10EC00F539AC /* AppMonitorManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 310C21981DCD10EC00F539AC /* AppMonitorManager.h */; };
-		310C219B1DCD10EC00F539AC /* AppMonitorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 310C21991DCD10EC00F539AC /* AppMonitorManager.m */; };
 		319201741DD6027A00CF70EA /* AppMonitorPersistanceManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 319201721DD6027A00CF70EA /* AppMonitorPersistanceManager.h */; };
 		319201751DD6027A00CF70EA /* AppMonitorPersistanceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 319201731DD6027A00CF70EA /* AppMonitorPersistanceManager.m */; };
 		31E294AF1DD6081E00BD4560 /* NSData+AES256.h in Headers */ = {isa = PBXBuildFile; fileRef = 31E294AD1DD6081E00BD4560 /* NSData+AES256.h */; };
@@ -61,8 +59,6 @@
 		310C218C1DCCFEC500F539AC /* AppMonitorEventManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppMonitorEventManager.m; sourceTree = "<group>"; };
 		310C21901DCCFEF600F539AC /* AppMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppMonitor.m; sourceTree = "<group>"; };
 		310C21941DCD0EE700F539AC /* AppMonitorContants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppMonitorContants.h; sourceTree = "<group>"; };
-		310C21981DCD10EC00F539AC /* AppMonitorManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppMonitorManager.h; sourceTree = "<group>"; };
-		310C21991DCD10EC00F539AC /* AppMonitorManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppMonitorManager.m; sourceTree = "<group>"; };
 		319201721DD6027A00CF70EA /* AppMonitorPersistanceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppMonitorPersistanceManager.h; sourceTree = "<group>"; };
 		319201731DD6027A00CF70EA /* AppMonitorPersistanceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppMonitorPersistanceManager.m; sourceTree = "<group>"; };
 		31E294AD1DD6081E00BD4560 /* NSData+AES256.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+AES256.h"; sourceTree = "<group>"; };
@@ -160,8 +156,6 @@
 			isa = PBXGroup;
 			children = (
 				310C21901DCCFEF600F539AC /* AppMonitor.m */,
-				310C21981DCD10EC00F539AC /* AppMonitorManager.h */,
-				310C21991DCD10EC00F539AC /* AppMonitorManager.m */,
 				319201721DD6027A00CF70EA /* AppMonitorPersistanceManager.h */,
 				319201731DD6027A00CF70EA /* AppMonitorPersistanceManager.m */,
 			);
@@ -198,7 +192,6 @@
 				31E294AF1DD6081E00BD4560 /* NSData+AES256.h in Headers */,
 				319201741DD6027A00CF70EA /* AppMonitorPersistanceManager.h in Headers */,
 				310C21841DCCE5CC00F539AC /* AppMonitorLogger.h in Headers */,
-				310C219A1DCD10EC00F539AC /* AppMonitorManager.h in Headers */,
 				310C218D1DCCFEC500F539AC /* AppMonitorEventManager.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -325,7 +318,6 @@
 				319201751DD6027A00CF70EA /* AppMonitorPersistanceManager.m in Sources */,
 				310C21921DCCFEF600F539AC /* AppMonitor.m in Sources */,
 				310C21851DCCE5CC00F539AC /* AppMonitorLogger.m in Sources */,
-				310C219B1DCD10EC00F539AC /* AppMonitorManager.m in Sources */,
 				31E294B01DD6081E00BD4560 /* NSData+AES256.m in Sources */,
 				310C218E1DCCFEC500F539AC /* AppMonitorEventManager.m in Sources */,
 			);
@@ -455,7 +447,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CODE_SIGN_IDENTITY = "";
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
-				CURRENT_PROJECT_VERSION = 1.7;
+				CURRENT_PROJECT_VERSION = 1.8;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -478,7 +470,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CODE_SIGN_IDENTITY = "";
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
-				CURRENT_PROJECT_VERSION = 1.7;
+				CURRENT_PROJECT_VERSION = 1.8;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;

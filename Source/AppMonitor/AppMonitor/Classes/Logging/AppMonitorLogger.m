@@ -11,41 +11,47 @@
 
 #define TAG  @"AppMonitor"
 
-static AppMonitorLoggingLevel loggingLevel;
+static AppMonitorLogLevel logLevel;
 
 @implementation AppMonitorLogger
 
-+(void)setLoggingLevel:(AppMonitorLoggingLevel)inLoggingLevel
++(void)setLoggingLevel:(AppMonitorLogLevel)inLogLevel
 {
-    loggingLevel = inLoggingLevel;
+    logLevel = inLogLevel;
 }
-+ (void)logWithLogLevel:(AppMonitorLoggingLevel)inLogLevel  message:(NSString *)format, ...
++ (void)logError:(NSString *)format, ...
 {
-#ifdef DEBUG
-    if (inLogLevel >= loggingLevel) {
-        va_list args;
-        va_start(args, format);
-        NSLogv(format, args);
-        va_end(args);    }
-#else
-    //RELEASE
-    if (inLogLevel == AppMonitorLoggingLevelErrors) {
-        va_list args;
-        va_start(args, format);
-        NSLogv(format, args);
-        va_end(args);
-    }
-#endif
+    va_list args;
+    va_start(args, format);
+    NSLogv(format, args);
+    va_end(args);
 }
 
-+(void) LogFrameworkCopyRights
+
++ (void)logWarning:(NSString *)format, ...
 {
-    NSLog(@"%@", [[AppMonitor sharedSDK]framewokCopyRight]);
+  #ifdef DEBUG
+    va_list args;
+    va_start(args, format);
+    NSLogv(format, args);
+    va_end(args);
+  #endif
+
 }
 
-+(void) LogFrameworkVersion
++ (void)log:(NSString *)format, ...
 {
-    NSLog(@"%@", [[AppMonitor sharedSDK]framewokVersion]);
-    
+   #ifdef DEBUG
+    va_list args;
+    va_start(args, format);
+    NSLogv(format, args);
+    va_end(args);
+    #endif
 }
+
++(void) logVersionAndCopyRights;
+{
+    NSLog(@"%@ \n %@",[AppMonitor version],[AppMonitor copyRighs]);
+}
+
 @end

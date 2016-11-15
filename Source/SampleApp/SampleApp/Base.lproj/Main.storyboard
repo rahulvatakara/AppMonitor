@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -31,17 +32,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YMb-8l-Fyc">
-                                <rect key="frame" x="137" y="273" width="102" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="102" id="TvL-de-vly"/>
-                                    <constraint firstAttribute="height" constant="30" id="uQ4-cL-0Dn"/>
-                                </constraints>
-                                <state key="normal" title="Update Details"/>
-                                <connections>
-                                    <action selector="updateDetailClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mNM-Wk-xoC"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w8O-9l-LIc">
                                 <rect key="frame" x="205" y="150" width="136" height="21"/>
                                 <constraints>
@@ -52,17 +42,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PTk-KN-Is3">
-                                <rect key="frame" x="123" y="344" width="130" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="130" id="AST-oy-yUw"/>
-                                    <constraint firstAttribute="height" constant="30" id="aTZ-9M-ydN"/>
-                                </constraints>
-                                <state key="normal" title="Post Test Event "/>
-                                <connections>
-                                    <action selector="postEventClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sEr-wf-p25"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="App spent time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yBV-S2-hWB">
                                 <rect key="frame" x="34" y="210" width="136" height="21"/>
                                 <constraints>
@@ -83,6 +62,26 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PTk-KN-Is3">
+                                <rect key="frame" x="122" y="282" width="130" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="130" id="AST-oy-yUw"/>
+                                    <constraint firstAttribute="height" constant="30" id="aTZ-9M-ydN"/>
+                                </constraints>
+                                <state key="normal" title="Post Test Event "/>
+                                <connections>
+                                    <action selector="postEventClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sEr-wf-p25"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c9S-zU-cVU">
+                                <rect key="frame" x="16" y="615" width="343" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="32" id="B7n-im-xiQ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -90,19 +89,21 @@
                             <constraint firstItem="yBV-S2-hWB" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="190" id="EeG-SF-9d8"/>
                             <constraint firstItem="w8O-9l-LIc" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="85.5" id="HH2-7S-GMC"/>
                             <constraint firstItem="yBV-S2-hWB" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="-85.5" id="KtD-0E-x9e"/>
-                            <constraint firstItem="PTk-KN-Is3" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="324" id="LqD-8a-tiJ"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="c9S-zU-cVU" secondAttribute="leading" id="L6Y-eQ-wwy"/>
+                            <constraint firstItem="PTk-KN-Is3" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="262" id="LqD-8a-tiJ"/>
                             <constraint firstItem="PTk-KN-Is3" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Ozy-eV-Tki"/>
-                            <constraint firstItem="YMb-8l-Fyc" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="253" id="SgE-oF-umf"/>
                             <constraint firstItem="L3C-Mi-NCe" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="130" id="UWS-hT-GR7"/>
                             <constraint firstItem="w8O-9l-LIc" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="130" id="Z4E-A4-w2n"/>
                             <constraint firstItem="Z4P-1f-nh3" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="85.5" id="aKw-YQ-2K8"/>
-                            <constraint firstItem="YMb-8l-Fyc" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="wCv-Lm-UJW"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="c9S-zU-cVU" secondAttribute="trailing" id="qfH-bS-gKQ"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="c9S-zU-cVU" secondAttribute="bottom" constant="20" id="uP1-f0-giJ"/>
                             <constraint firstItem="Z4P-1f-nh3" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="190" id="zJr-6Q-don"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="appLauchCountLabel" destination="w8O-9l-LIc" id="Prl-bv-eeN"/>
                         <outlet property="appSpentTimeLabel" destination="Z4P-1f-nh3" id="6PK-KN-fes"/>
+                        <outlet property="frameWorkVersionLabel" destination="c9S-zU-cVU" id="bjS-IU-X2C"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -114,6 +115,7 @@
                     <nil key="highlightedColor"/>
                 </label>
             </objects>
+            <point key="canvasLocation" x="136.80000000000001" y="138.98050974512745"/>
         </scene>
     </scenes>
 </document>

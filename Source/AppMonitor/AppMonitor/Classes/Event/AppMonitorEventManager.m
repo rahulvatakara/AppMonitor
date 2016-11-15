@@ -21,7 +21,7 @@ NSString* const kEventKey = @"kEventKey";
     NSString *postEvent = [NSString stringWithFormat:@"Event with name :%@ attributes : %@",
                            eventName,attributes];
 
-    [AppMonitorLogger logWithLogLevel:AppMonitorLoggingLevelMinimal message:@"%@",postEvent];
+    [AppMonitorLogger log:@"%@",postEvent];
 }
 
 @end

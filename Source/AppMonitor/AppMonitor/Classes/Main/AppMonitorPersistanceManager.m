@@ -22,7 +22,7 @@ static NSString * const kAppSpentTime   = @"AppMonitorAppSpentTime";
     NSData *encrypedData = [unencrypedData AES256EncryptWithKey:AES_ENCRIPTION_KEY];
     [[NSUserDefaults standardUserDefaults]setObject:encrypedData forKey:kAppLaunchCount];
     [[NSUserDefaults standardUserDefaults]synchronize];
-
+    
 }
 +(void) encryptAndSaveAppSpentTime:(NSTimeInterval)appSpentTime
 {
@@ -31,12 +31,12 @@ static NSString * const kAppSpentTime   = @"AppMonitorAppSpentTime";
     NSData *encrypedData = [unencrypedData AES256EncryptWithKey:AES_ENCRIPTION_KEY];
     [[NSUserDefaults standardUserDefaults]setObject:encrypedData forKey:kAppSpentTime];
     [[NSUserDefaults standardUserDefaults]synchronize];
-
+    
 }
 +(NSInteger) decryptAndRetrieveAppLaunchCount
 {
     NSInteger appLauchCount = 0;
-
+    
     NSData *encryptedData = [[NSUserDefaults standardUserDefaults]objectForKey:kAppLaunchCount];
     if (encryptedData) {
         NSData *unEcryptedData = [encryptedData AES256DecryptWithKey:AES_ENCRIPTION_KEY];
@@ -54,8 +54,8 @@ static NSString * const kAppSpentTime   = @"AppMonitorAppSpentTime";
         NSData *unEcryptedData = [encryptedData AES256DecryptWithKey:AES_ENCRIPTION_KEY];
         appSpentTime = [[NSKeyedUnarchiver unarchiveObjectWithData:unEcryptedData]doubleValue];
     }
-   
+    
     return appSpentTime;
-
+    
 }
 @end

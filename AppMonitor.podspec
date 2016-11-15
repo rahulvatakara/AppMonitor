@@ -11,7 +11,7 @@ Pod::Spec.new do |s|
 
 
   s.name         = "AppMonitor"
-  s.version    = "1.7"
+  s.version    = "1.8"
   s.summary      = "AppMonitor monitors your app usage"
   s.description  = <<-DESC
 AppMonitor is a framework which can be used for monitoring your app usage including number of time user open the application and the time spend by user in your application

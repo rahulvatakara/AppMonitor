@@ -8,18 +8,16 @@
 
 #import "AppMonitor.h"
 #import "AppMonitorContants.h"
-#import "AppMonitorManager.h"
 #import "AppMonitorLogger.h"
 #import "AppMonitorEventManager.h"
-
+#import "AppMonitorPersistanceManager.h"
 #define  COPY_RIGHTS @"Copyright © 2016 Robosoft Technologies Pvt Ltd. All rights reserved."
 
+static BOOL isInitialized = NO;
+
 @interface AppMonitor ()
-
-@property (nonatomic,assign) BOOL isInitialized;
-
-@property (nonatomic ,strong) AppMonitorManager *monitorManager;
-
+@property (nonatomic,strong) NSDate *startDate;
+@property (nonatomic,assign) BOOL isAppActiveNow;
 @end
 
 @implementation AppMonitor
@@ -35,119 +33,156 @@
     return appMonitor;
 }
 
--(instancetype) init
+
+
++(void) initializeWithAPIKey:(NSString*)apiKey
 {
-    self = [super init];
-   
-    if (self) {
-        self.isInitialized = NO;
+    if ([[AppMonitor validAPIkeys] containsObject:apiKey]) {
         
-        self.monitorManager = [[AppMonitorManager alloc]init];
-    }
-    return self;
-}
-
-+(void) initializeWithAPIKey:(NSString*)apiKey logLevel:(AppMonitorLoggingLevel)inLogLevel
-{
-    if ([[self validAPIkeys] containsObject:apiKey]) {
-       
-        if ([[AppMonitor sharedSDK]isInitialized]) {
-          
-           [AppMonitorLogger logWithLogLevel:AppMonitorLoggingLevelMinimal message:LOG_MESSAGE_SDK_ALREADY_INITIALIZED];
-            
-
-        }
+        if (isInitialized)
+            [AppMonitor throwExceptionWithErrorMessage:LOG_MESSAGE_SDK_ALREADY_INITIALIZED];
+        
         else
         {
-            [[AppMonitor sharedSDK]setIsInitialized:YES];
-            [AppMonitorLogger setLoggingLevel:inLogLevel];
-            [AppMonitorLogger LogFrameworkVersion];
-            [AppMonitorLogger LogFrameworkCopyRights];
-
-            [AppMonitorLogger logWithLogLevel:AppMonitorLoggingLevelAllLogs message:LOG_MESSAGE_SDK_INITIALIZED];
-            [[[AppMonitor sharedSDK]monitorManager]startMonitor];
-
+            isInitialized = YES;
+            [AppMonitorLogger setLoggingLevel:AppMonitorLogLevelMinimal];
+            [AppMonitorLogger logVersionAndCopyRights];
+            [AppMonitorLogger log:LOG_MESSAGE_SDK_INITIALIZED];
+            [[AppMonitor sharedSDK]startMonitor];
+            [[AppMonitor sharedSDK]updateAppLaunchCount];
+            
         }
     }
     else
-    {
-        [AppMonitorLogger logWithLogLevel:AppMonitorLoggingLevelErrors message:LOG_MESSAGE_SDK_INVALID_APIKEY];
-        
-        @throw NSInvalidArgumentException;
-    }
+        [AppMonitor throwExceptionWithErrorMessage:LOG_MESSAGE_SDK_ALREADY_INITIALIZED];
     
 }
--(void) postEvent:(NSString*) eventName withAttributes:(NSArray*)attributes
++(void) setLogLevel:(AppMonitorLogLevel)logLevel
 {
-    if ([self isInitialized])
-    {
-    
+    [AppMonitorLogger setLoggingLevel:logLevel];
+}
+
++(void) postEvent:(NSString*) eventName withAttributes:(NSArray*)attributes
+{
+    if (isInitialized)
         [AppMonitorEventManager postEventWithName:eventName attributes:attributes];
-    }
     else
-    {
-        [AppMonitorLogger logWithLogLevel:AppMonitorLoggingLevelErrors message:LOG_MESSAGE_SDK_NOT_INITIALIZED];
-        
-        @throw NSInvalidArgumentException;
-
-
-    }
-}
-
--(NSInteger) appLaunchCount
-{
-    NSInteger appLaunchCount = 0;
+        [AppMonitor throwExceptionWithErrorMessage:LOG_MESSAGE_SDK_NOT_INITIALIZED];
     
-    if ([self isInitialized])
-    {
-        appLaunchCount = [self.monitorManager appLaunchCount];
-        
-    }
-    else
-    {
-        [AppMonitorLogger logWithLogLevel:AppMonitorLoggingLevelErrors message:LOG_MESSAGE_SDK_NOT_INITIALIZED];
-
-        @throw NSInvalidArgumentException;
-
-    }
-    return appLaunchCount;
 }
 
--(NSTimeInterval) appSpentTime
++(NSInteger) appLaunchCount;
 {
-    NSTimeInterval appSpentTime = 0.0;
-   
-    if ([self isInitialized])
+    
+    if (isInitialized)
+        return [AppMonitorPersistanceManager decryptAndRetrieveAppLaunchCount];
+    
+    else
+        [AppMonitor throwExceptionWithErrorMessage:LOG_MESSAGE_SDK_NOT_INITIALIZED];
+    
+    return 0;
+}
+
++(NSTimeInterval) appSpentTime
+{
+    
+    if (isInitialized)
     {
-        appSpentTime = [self.monitorManager appSpentTime];
-        
+        [[AppMonitor sharedSDK]updateAppSpentTime];
+        return [AppMonitorPersistanceManager decryptAndRetrieveAppSpentTime];
     }
     else
-    {
-        [AppMonitorLogger logWithLogLevel:AppMonitorLoggingLevelErrors message:LOG_MESSAGE_SDK_NOT_INITIALIZED];
+        [AppMonitor throwExceptionWithErrorMessage:LOG_MESSAGE_SDK_NOT_INITIALIZED];
+    
+    return 0;
+    
+}
+#pragma mark - Monitoring
+-(void) startMonitor
+{
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(applicationDidBecomeActiveNotification:)
+                                                 name:UIApplicationDidBecomeActiveNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(applicationWillResignActiveNotification:)
+                                                 name:UIApplicationWillResignActiveNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(didReceiveMemoryWarning)
+                                                 name:UIApplicationDidReceiveMemoryWarningNotification
+                                               object:nil];
+}
+-(void) stopMonitor
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:UIApplicationDidBecomeActiveNotification object:nil];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:UIApplicationWillResignActiveNotification object:nil];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:UIApplicationDidReceiveMemoryWarningNotification object:nil];
+}
+
+#pragma mark-  Notification callbacks
+
+-(void) applicationDidBecomeActiveNotification:(NSNotification*)notification
+{
+    self.startDate = [NSDate date];
+    self.isAppActiveNow = YES;
+    
+}
+-(void) applicationWillResignActiveNotification:(NSNotification*)notification
+{
+    [self updateAppSpentTime];
+    self.isAppActiveNow = NO;
+    
+}
+-(void) didReceiveMemoryWarning:(NSNotification*)notification
+{
+    [self stopMonitor];
+}
+
+-(void) updateAppSpentTime
+{
+    if (self.isAppActiveNow) {
         
-        @throw NSInvalidArgumentException;
-
-
+        NSTimeInterval earlierSpentTime = [AppMonitorPersistanceManager decryptAndRetrieveAppSpentTime];
+        NSTimeInterval spentTimeTillNow = fabs([self.startDate timeIntervalSinceDate:[NSDate date]])
+        + earlierSpentTime;
+        self.startDate = [NSDate date];
+        [AppMonitorPersistanceManager encryptAndSaveAppSpentTime:spentTimeTillNow];
     }
-    return appSpentTime;
-
+}
+-(void) updateAppLaunchCount
+{
+    NSInteger currentLuanchCount = [AppMonitorPersistanceManager decryptAndRetrieveAppLaunchCount];
+    currentLuanchCount ++;
+    [AppMonitorPersistanceManager encryptAndSaveAppLaunchCount:currentLuanchCount];
 }
 
 -(void)dealloc
 {
+    [self stopMonitor];
     NSString *logMessage = [NSString stringWithFormat:@"Deallocated %@",NSStringFromClass([self class])];
-    [AppMonitorLogger logWithLogLevel:AppMonitorLoggingLevelAllLogs message:logMessage];
+    [AppMonitorLogger log:logMessage];
 }
-#pragma mark - Framework Details
--(NSString*) framewokVersion
+
++(NSString*) version
 {
     return [NSString stringWithFormat:@"AppMonitor Version :%1.1f",AppMonitorVersionNumber];
 }
-
--(NSString*) framewokCopyRight
++(NSString*) copyRighs
 {
     return COPY_RIGHTS;
+}
+
+
+#pragma mark-Util Methods
++(void)throwExceptionWithErrorMessage:(NSString*)errorMessage
+{
+    [AppMonitorLogger logError:errorMessage];
+    @throw NSInvalidArgumentException;
 }
 
 #pragma mark-API keys
@@ -155,4 +190,5 @@
 {
     return @[@"12345",@"45678",@"abcde",@"abc123"];
 }
+
 @end

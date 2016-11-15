@@ -35,7 +35,7 @@ use_frameworks!
 
 target '<Your Target Name>' do
 
-pod 'AppMonitor', '~> 1.7'
+pod 'AppMonitor', '~> 1.8'
 
 end
 ```
@@ -59,7 +59,7 @@ SDK should be initialised before  invoking any APIs available in the framewok.
 ```ObjC
 #import <AppMonitor/AppMonitor.h>
 
-[AppMonitor initializeWithAPIKey:<YOUR_API_KEY> logLevel:AppMonitorLoggingLevelAllLogs];
+[AppMonitor initializeWithAPIKey:<YOUR_API_KEY>];
 ```
 
 ### Posting Events
@@ -67,20 +67,25 @@ SDK should be initialised before  invoking any APIs available in the framewok.
 You can post events with name and attributes.
 
 ```ObjC
-[[AppMonitor sharedSDK]postEvent:@"Test Event" withAttributes:@[@"arg1",@"arg2"]];
-```
+ [AppMonitor postEvent:@"Test" withAttributes:@[@"arg1",@"arg2"]];
+ ```
 
 ### Retrieving App Launch Count
 This API will returns the app lunch count till that time . It will be returning an `NSInteger`.
 
 ```ObjC
-[[AppMonitor sharedSDK]appLaunchCount];
+ NSInteger appLaunchCount = [AppMonitor appLaunchCount]
 ```
 
 ### Retrieving App spent time
 This API will returns the spent time of user in the application till that time . It will be returning an `NSTimeInterval`.
 ```ObjC
-[[AppMonitor sharedSDK]appSpentTime];
+NSTimeInterval appSpentTime = [AppMonitor appSpentTime];
+```
+### Setting log level
+This API can be used to change the log level from deafult AppMonitorLogLevelMinimal.
+```ObjC
+[AppMonitor setLogLevel:AppMonitorLogLevelAllLogs];
 ```
 ## Trouble shooting
 

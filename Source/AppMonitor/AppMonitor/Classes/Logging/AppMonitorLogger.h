@@ -14,26 +14,29 @@
 
 /*!
  @abstract  This method set logging level
- @param     loggingLevel Logging level
+ @param     logLevel , Logging level
  */
-+(void) setLoggingLevel:(AppMonitorLoggingLevel)loggingLevel;
++(void) setLoggingLevel:(AppMonitorLogLevel)logLevel;
 
 /*!
- @abstract  This method will log message to console
- @param     logLevel Logging level
+ @abstract  This method will log error message to console
  @param     format message to be logged
  */
-+ (void)logWithLogLevel:(AppMonitorLoggingLevel)logLevel  message:(NSString *)format, ...;
-
++ (void)logError:(NSString *)format, ...;
 /*!
- @abstract  This method will log framework copy rights to console
+ @abstract  This method will log warning message to console
+ @param     format message to be logged
  */
-+(void) LogFrameworkCopyRights;
++ (void)logWarning:(NSString *)format, ...;
+/*!
+ @abstract  This method will log message to console
+ @param     format message to be logged
+ */
++ (void)log:(NSString *)format, ...;
 
 /*!
- @abstract  This method will log framework version to console
-  */
-+(void) LogFrameworkVersion;
-
+ @abstract  This method will log framework version and copy rights to console
+ */
++(void) logVersionAndCopyRights;
 
 @end
